@@ -10,38 +10,41 @@ import java.util.Map;
 
 public class InventoryServiceImpl implements InventoryService {
 
-   Map<String,List<Book>> mp = new HashMap<>();
+   Map<String,Book> mp = new HashMap<>();
 
     @Override
     public void addBook(Book book) {
-       mp.computeIfAbsent(book.getIsbn(),k->new ArrayList<>())
-               .add(book);
+        if(!mp.containsKey(book.getIsbn())){
+            mp.put(book.getIsbn(), book);
+        }else{
+            System.out.println("Book with same isbn exists");
+        }
+
+
 
     }
 
     @Override
     public void removeBook(Book book) {
-
+        Book removed = mp.remove(book.getIsbn());
+        if (removed == null) {
+            System.out.println("Book not found to remove");
+        }
     }
 
     @Override
     public void updateBook(String isbn,Book updateBook) {
-        List<Book> getBook = mp.get(isbn);
-        if(getBook!=null){
-            for(int i=0;i<getBook.size();i++){
-                Book current = getBook.get(i);
-
-                if(current.getTitle().equals(updateBook.getTitle())){
-                    getBook.set(i,updateBook);
-                }
-            }
+        if (mp.containsKey(isbn)) {
+            mp.put(isbn, updateBook);
+        } else {
+            System.out.println("No book found with ISBN: " + isbn + " to update");
         }
 
-        System.out.println("No value to update");
+        //System.out.println("No value to update");
     }
 
     @Override
-    public  Map<String,List<Book>> getAllBooks() {
+    public  Map<String,Book> getAllBooks() {
         return mp;
     }
 }

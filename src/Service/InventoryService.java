@@ -9,5 +9,5 @@ public interface InventoryService {
     void addBook(Book book);
     void removeBook(Book book);
     void updateBook(String id,Book book);
-    Map<String,List<Book>> getAllBooks();
+    Map<String,Book> getAllBooks();
 }

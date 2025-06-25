@@ -6,10 +6,14 @@ public class Patron {
     private String name;
     private String mobile;
 
-    public Patron(String mobile, String patronId, String name) {
+    public Patron(String patronId, String name, String mobile) {
         this.mobile = mobile;
         this.patronId = patronId;
         this.name = name;
+    }
+
+    public String getPatronId() {
+        return patronId;
     }
 
     public String getName() {
@@ -26,5 +30,14 @@ public class Patron {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    @Override
+    public String toString() {
+        return "Patron{" +
+                "patronId='" + patronId + '\'' +
+                ", name='" + name + '\'' +
+                ", mobile='" + mobile + '\'' +
+                '}';
     }
 }
