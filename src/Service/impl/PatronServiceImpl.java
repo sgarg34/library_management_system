@@ -43,4 +43,9 @@ public class PatronServiceImpl implements PatronService {
     public void addPatronBooks(String patronID,Book book){
         borrowedBooks.computeIfAbsent(patronID,k->new ArrayList<>()).add(book);
     }
+
+    @Override
+    public void removeBook(String patronID,Book book){
+        borrowedBooks.get(patronID).remove(book);
+    }
 }

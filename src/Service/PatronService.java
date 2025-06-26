@@ -13,4 +13,5 @@ public interface PatronService {
     Patron getPatron(String id);
     List<Book> allBorrowedBooks(String patronID);
     void addPatronBooks(String patronID,Book book);
+    void removeBook(String patronID,Book book);
 }

@@ -38,7 +38,17 @@ public class Main {
         lendingService.checkout("P1001","127687678");
         lendingService.checkout("P1001","127687677");
 
-        System.out.println(patronService.allBorrowedBooks("P1001"));
+        for (Map.Entry<String, Book> entry : getBooks.entrySet()) {
+            System.out.println("ISBN: " + entry.getKey());
+            System.out.println(entry.getValue());
+        }
+
+        lendingService.returnBook("P1001","127687678");
+
+        for (Map.Entry<String, Book> entry : getBooks.entrySet()) {
+            System.out.println("ISBN: " + entry.getKey());
+            System.out.println(entry.getValue());
+        }
         //lendingService.checkout("P1001","127687678");
 
 

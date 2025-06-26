@@ -6,6 +6,8 @@ import Service.InventoryService;
 import Service.LendingService;
 import Service.PatronService;
 
+import java.util.List;
+
 public class LendingServiceImpl implements LendingService {
 
     private final InventoryService inventoryService;
@@ -30,5 +32,19 @@ public class LendingServiceImpl implements LendingService {
 
 
 
+    }
+
+    @Override
+    public void returnBook(String patronID, String ISBN) {
+
+        List<Book> patronIsuedBooks = patronService.allBorrowedBooks(patronID);
+        for(Book books:patronIsuedBooks){
+            if(books.getIsbn().equals(ISBN)){
+                books.setAvailable(true);
+                patronService.removeBook(patronID,books);
+                System.out.println("Book is now availabe");
+                return;
+            }
+        }
     }
 }
