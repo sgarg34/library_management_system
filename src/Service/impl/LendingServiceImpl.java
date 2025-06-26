@@ -22,7 +22,7 @@ public class LendingServiceImpl implements LendingService {
         Patron patron = patronService.getPatron(patronID);
         if(book!=null && book.isAvailable()){
             book.setAvailable(false);
-            patronService.addPatronBooks(book);
+            patronService.addPatronBooks(patronID,book);
             System.out.println("Book is issued to"+patron.getName()+"("+patron.getPatronId()+")");
         }else{
             System.out.println("Book is not available");

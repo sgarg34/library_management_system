@@ -33,10 +33,15 @@ public class Main {
         }
 
         //System.out.println(patronService.getPatron("P1001"));
-        System.out.println(inventoryService.searchByISBN("127687678"));
+        //Book book = inventoryService.searchByISBN("127687678");
 
+        lendingService.checkout("P1001","127687678");
         lendingService.checkout("P1001","127687677");
-        lendingService.checkout("P1001","127687677");
+
+        System.out.println(patronService.allBorrowedBooks("P1001"));
+        //lendingService.checkout("P1001","127687678");
+
+
 
 
 

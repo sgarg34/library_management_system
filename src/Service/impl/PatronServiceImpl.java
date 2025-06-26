@@ -13,7 +13,7 @@ public class PatronServiceImpl implements PatronService {
 
     Map<String,Patron> mp = new HashMap<>();
 
-    private List<Book> borrowedBooks = new ArrayList<>();
+    private Map<String,List<Book>> borrowedBooks = new HashMap<>();
 
     @Override
     public void addPatron(Patron patron) {
@@ -35,12 +35,12 @@ public class PatronServiceImpl implements PatronService {
     }
 
     @Override
-    public List<Book> allBorrowedBooks(Book book) {
-        return borrowedBooks;
+    public  List<Book> allBorrowedBooks(String patronID) {
+        return borrowedBooks.get(patronID);
     }
 
     @Override
-    public void addPatronBooks(Book book){
-        borrowedBooks.add(book);
+    public void addPatronBooks(String patronID,Book book){
+        borrowedBooks.computeIfAbsent(patronID,k->new ArrayList<>()).add(book);
     }
 }
