@@ -5,6 +5,15 @@ public class Book {
     private String title;
     private String author;
     private int publicationYear;
+    private boolean isAvailable = true;
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 
     public Book(String isbn, String title, String author, int publicationYear) {
         this.isbn = isbn;
@@ -52,6 +61,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", publicationYear=" + publicationYear +
+                ", isAvailable=" + isAvailable +
                 '}';
     }
 }

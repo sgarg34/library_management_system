@@ -47,4 +47,9 @@ public class InventoryServiceImpl implements InventoryService {
     public  Map<String,Book> getAllBooks() {
         return mp;
     }
+
+    @Override
+    public Book searchByISBN(String ISBN) {
+        return mp.get(ISBN);
+    }
 }

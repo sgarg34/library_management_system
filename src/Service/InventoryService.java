@@ -10,4 +10,5 @@ public interface InventoryService {
     void removeBook(Book book);
     void updateBook(String id,Book book);
     Map<String,Book> getAllBooks();
+    Book searchByISBN(String ISBN);
 }
